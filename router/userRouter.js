@@ -3,10 +3,10 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { User } = require("../db/userSchema");
 const { Room } = require("../db/roomSchema");
+const { SECRET_KEY } = require("../config");
 const userRouter = express.Router();
-require('dotenv').config()
 
-const SECRET_KEY = process.env.SECRET_KEY // Replace with a secure secret key
+const SECRET_KEY = SECRET_KEY; // Replace with a secure secret key
 
 
 userRouter.get("/tester", async (req, res) => {
