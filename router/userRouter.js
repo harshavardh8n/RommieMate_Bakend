@@ -41,7 +41,7 @@ userRouter.post('/login', async (req, res) => {
         const room = await Room.findOne({ members: user._id });
         const roomId = room ? room._id : null;  // If user is in a room, return the roomId, else null
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             token,
             user: { id: user._id, name: user.name, email: user.email },
