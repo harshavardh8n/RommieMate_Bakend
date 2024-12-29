@@ -6,12 +6,11 @@ const { Invitation } = require("../db/invitationSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userMiddleware = require("../middlewares/userMiddleware");
-const { SECRET_KEY } = require("../config");
-// require('dotenv').config()
+require('dotenv').config()
 
 const expenseRouter = express.Router()
 
-// const SECRET_KEY = SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
 // DONE
 
 
