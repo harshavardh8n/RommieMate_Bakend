@@ -6,6 +6,7 @@ const { Invitation } = require("../db/invitationSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userMiddleware = require("../middlewares/userMiddleware");
+const checkUserRoom = require("../middlewares/checkUserRoom");
 require('dotenv').config()
 
 const expenseRouter = express.Router()
@@ -53,13 +54,15 @@ expenseRouter.post("/expenses",async(req,res)=>{
 
 
 // DONE
-expenseRouter.get('/rooms/:roomId/members', async (req, res) => {
+expenseRouter.get('/room',userMiddleware,checkUserRoom, async (req, res) => {
     try {
-        
-      const { roomId } = req.params;
+      // const userId = req.userId;
+
+      const  roomId = req.roomId;
+      // console.log("room ID: "+roomId);
       const room = await Room.findById(roomId).populate('members');
       if (!room) return res.status(404).json({ error: 'Room not found' });
-      res.status(200).json({ roomId, members: room.members });
+      res.status(200).json({ success:true,roomId, members: room.members });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

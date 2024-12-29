@@ -16,7 +16,7 @@ userRouter.get("/tester", async (req, res) => {
 userRouter.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-
+        console.log(email,password)
         // Validate input
         if (!email || !password) {
             return res.status(400).json({ error: "Email and password are required" });
