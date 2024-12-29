@@ -8,6 +8,11 @@ require('dotenv').config()
 
 const SECRET_KEY = process.env.SECRET_KEY // Replace with a secure secret key
 
+
+userRouter.get("/tester", async (req, res) => {
+    return res.status(200).json({mssg:"Inside works properly"})
+});
+
 // Login route with JWT and check if the user is part of any room
 userRouter.post('/login', async (req, res) => {
     try {
