@@ -6,7 +6,7 @@ const { Room } = require("../db/roomSchema");
 const { SECRET_KEY } = require("../config");
 const userRouter = express.Router();
 
-const SECRET_KEY = SECRET_KEY; // Replace with a secure secret key
+// const SECRET_KEY = SECRET_KEY; // Replace with a secure secret key
 
 
 userRouter.get("/tester", async (req, res) => {

@@ -11,7 +11,7 @@ const { SECRET_KEY } = require("../config");
 
 const expenseRouter = express.Router()
 
-const SECRET_KEY = SECRET_KEY;
+// const SECRET_KEY = SECRET_KEY;
 // DONE
 
 
