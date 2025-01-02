@@ -14,7 +14,7 @@ app.use(cors())
 
 const URI = process.env.MONGO_URL
 mongoose
-  .connect("mongodb://localhost:27017/expenseTrackerTesting")
+  .connect(URI)
   .then(() => console.log('Connected to MongoDB'))
 
 
