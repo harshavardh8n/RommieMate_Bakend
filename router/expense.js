@@ -153,8 +153,8 @@ expenseRouter.put('/rooms/:roomId/members', async (req, res) => {
 
  expenseRouter.post('/rooms', userMiddleware, async (req, res) => {
   try {
-      const { members, admin } = req.body; // Members should include users to be invited (excluding admin)
-
+      const { members} = req.body; // Members should include users to be invited (excluding admin)
+      const admin = req.userId;
       if (!admin) {
           return res.status(400).json({ success: false, message: "Admin is required to create a room." });
       }

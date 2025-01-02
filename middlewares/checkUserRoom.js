@@ -27,7 +27,7 @@ const checkUserRoom = async (req, res, next) => {
     // Step 4: If the user is part of a room, set the roomId on the request object
     req.roomId = room._id; // Set the roomId in the request for later use
     
-    // console.log(req.roomId+"---------")
+    console.log(req.roomId+"---------")
     // Proceed to the next middleware or route handler
     next();
   } catch (error) {

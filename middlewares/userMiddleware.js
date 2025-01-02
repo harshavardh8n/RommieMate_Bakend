@@ -5,6 +5,7 @@ const SECRET_KEY = process.env.SECRET_KEY;
 
 const userMiddleware = (req, res, next) => {
   try {
+    console.log("coming in middleware");
     // Get the token from the Authorization header
     const authHeader = req.headers.authorization;
     // console.log(authHeader)
@@ -14,6 +15,7 @@ const userMiddleware = (req, res, next) => {
 
     // Extract the token
     const token = authHeader.split(" ")[1];
+    console.log(token);
 
     if (!token) {
       return res.status(401).json({ message: "Token is missing." });
@@ -25,12 +27,13 @@ const userMiddleware = (req, res, next) => {
     const decodedToken = jwt.verify(token, secretKey);
 
     if (!decodedToken || !decodedToken.userId) {
+      console.log("token invalid");
       return res.status(401).json({ message: "Invalid token." });
     }
 
     // Set the userId in the request object
     req.userId = decodedToken.userId;
-    // console.log(req.userId)
+    console.log(req.userId)
 
     // Proceed to the next middleware or route handler
     next();
